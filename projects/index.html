@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Edit page title -->
+    <title>Projects - CSE 440</title>
+ 
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,400italic,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- This script dynamically loads CSS and JS files from the course base directory -->
+    <!-- Only edit if you want to change the paths to your JS/CSS sources -->
+    <script>
+      // Get the base path for the course web by extracting 'courses' + courseName + quarter
+      var fullPathArray = window.location.pathname.split('/');
+      var basePathArray = fullPathArray.slice(0,4);
+      var basePath = basePathArray.join('/');
+
+      // CSS files to load
+      var cssSources = [
+        '/site/css/bootstrap.min.css',
+        '/site/css/main.css',
+      ];
+
+      // Javscript files to load
+      var jsSources = [
+        '/site/js/jquery.min.js',
+        '/site/js/bootstrap.min.js',
+        '/site/js/nav-bar.js',
+        '/site/js/footer.js'
+      ];
+  
+      // Include the script that will load the CSS & Javscript files
+      document.write("<script src=\'" + basePath + "/site/js/load-sources.js\'><\/script>");
+      
+      function toggle_instructions() {
+		  var x = document.getElementById("instructions");
+		  var y = document.getElementById("card_instructions");
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		    y.style.borderBottomLeftRadius = "0px";
+    		y.style.borderBottomRightRadius = "0px";
+		  } else {
+		    x.style.display = "none";
+		    y.style.borderBottomLeftRadius = "4px";
+    		y.style.borderBottomRightRadius = "4px";
+		  }
+		}
+    </script>
+
+  </head>
+  
+  <body>
+    <header class="site-header">
+    <!-- Javascript will load the navigation bar code here. -->
+    </header>
+
+    <div class="container">
+          
+      <!-- Begin page content -->
+    
+      <!-- Edit main page content -->
+      <h1>Project Theme</h1>
+      <p>
+        Theme: Designing for Becoming in an Age of Generative AI
+      </p>
+      <p>
+        In this project, you will work in teams to identify a specific community, learn about their needs and lived experiences through qualitative research, and design a community-grounded intervention that supports a dialectical activity. A central part of your work will be to critically decide whether, how, and to what extent GenAI should be incorporated—recognizing that effective designs may sit anywhere along a spectrum from no AI, to partial co-creation, to AI-intensive systems. 
+      </p>
+
+	
+	<div class="card">
+	  <ul class="list-group list-group-flush">
+	    <li class="list-group-item" id="card_instructions" style="background-color: #673BB8; color: #ffffff;" onclick="toggle_instructions()">Project instructions for teams</li>
+	    <li class="list-group-item" id="instructions" style="display: none;">
+	    	
+        <p>
+        <a href="https://dl.acm.org/doi/pdf/10.1145/3613904.3641945" target="_blank">Dialectical activities</a> are practices that are valuable not because they lend to task completion or measurable outputs, but because they support an ongoing process of becoming—such as learning, relationship-building, creative development, and identity work. These activities are nonlinear, reflective, context-dependent, and resistant to quantification. Yet many interactive technologies are designed to optimize speed, output, and task completion—reflecting dominant productivity norms. As a result, these systems often privilege efficiency over agency, and completion over reflection, undermining the slow, dialectical processes through which people develop skills, values, and relationships.
+      </p>
+      <p>
+        At the same time, generative AI (GenAI) is increasingly embedded in everyday workflows, shaping how people write, create, learn, and seek support. This shift introduces new possibilities: when thoughtfully designed, GenAI can expand access to dialectical practices, scaffold reflections, and reduce the demands that compete with the time and space required for the slow process of becoming. However for some communities and practices, it can amplify harm due to embedded structural inequities. From triaging <a href="https://academic.oup.com/edited-volume/59762/chapter-abstract/511416518?redirectedFrom=fulltext&login=false" target="_blank">bias</a> to combatting the <a href="https://truthout.org/articles/big-tech-data-centers-compound-decades-of-environmental-racism-in-the-south/" target="_blank">direct environmental threats of data centers</a>, user communities also have to weigh the consequences of integrating GenAI into their life.
+      </p>
+
+    <P>
+    In this project, you will work in teams to identify a specific community, learn about their needs and lived experiences through qualitative research, and design a community-grounded intervention that supports a dialectical activity. A central part of your work will be to critically decide whether, how, and to what extent GenAI should be incorporated—recognizing that effective designs may sit anywhere along a spectrum from no AI, to partial co-creation, to AI-intensive systems. 
+    </P>
+    <p>
+      For example, <a href="https://www.thewhatsupapp.co.uk/" target="_blank">WhatsUp</a> (no AI), <a href="https://helloalma.com/for-providers/resources/note-assist/" target="_blank">Note Assist</a> (partial co-creation), and <a href="https://replika.com/" target="_blank">Replika</a> (AI-intensive) are all designed to nurture mental wellness journeys. WhatsUp does not require AI because the design connects employees in the United Kingdom with existing mental health staff. Note Assist uses GenAI to generate initial session documentation for mental health professionals, but the final notes are determined by the user to maintain professional integrity. Replika utilizes the creativity of GenAI to help users curate a tailored companion for processing their emotions. Even within the same problem space, understanding the social context of the target user community is key to designing for their becoming in the age of GenAI. We encourage teams to similarly ground their design directions in the social context of their user communities.
+    </p>
+
+    <p>Broad Project Directions: </p>
+    <ul>
+    <li>Supporting ongoing relational work (e.g.,friendship, mentorship, mutual aid, community care)</li>
+    <li>Supporting creative development (e.g.,writing, art, music, or crafting)</li>
+    <li>Supporting identity work, self-exploration, or personal growth</li>
+    </ul>
+  
+    <p>Additional Critical Considerations: </p>
+    <ul>
+    <li>It is critical that you keep an open mind to learning about potential problems and challenges for your chosen community.</li>
+    <li>You need to consider a local community that you have access to throughout this course. This will require you to reach out to and interview members of this community (for example, professional artists may be difficult to access, but student or local craft groups may be easier to find).</li>
+    </ul>
+	  	
+	    </li>
+	  </ul>
+	</div>	
+
+   
+</div>
+
+
+   
+
+      <!-- End page content -->
+
+    <footer class="site-footer">
+    <!-- Javascript will load the footer code here. -->
+    </footer>
+
+  </body>
+
+</html>
