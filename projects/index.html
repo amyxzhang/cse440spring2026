@@ -1,148 +1,389 @@
+```html
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Edit page title -->
-    <title>Projects - CSE 440</title>
- 
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,400italic,600' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <title>Projects - CSE 440</title>
 
-    <!-- This script dynamically loads CSS and JS files from the course base directory -->
-    <!-- Only edit if you want to change the paths to your JS/CSS sources -->
-    <script>
-      // Get the base path for the course web by extracting 'courses' + courseName + quarter
-      var fullPathArray = window.location.pathname.split('/');
-      var basePathArray = fullPathArray.slice(0,4);
-      var basePath = basePathArray.join('/');
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,400italic,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-      // CSS files to load
-      var cssSources = [
-        '/site/css/bootstrap.min.css',
-        '/site/css/main.css',
-      ];
+  <script>
+    var fullPathArray = window.location.pathname.split('/');
+    var basePathArray = fullPathArray.slice(0, 4);
+    var basePath = basePathArray.join('/');
 
-      // Javscript files to load
-      var jsSources = [
-        '/site/js/jquery.min.js',
-        '/site/js/bootstrap.min.js',
-        '/site/js/nav-bar.js',
-        '/site/js/footer.js'
-      ];
-  
-      // Include the script that will load the CSS & Javscript files
-      document.write("<script src=\'" + basePath + "/site/js/load-sources.js\'><\/script>");
-      
-      function toggle_instructions() {
-		  var x = document.getElementById("instructions");
-		  var y = document.getElementById("card_instructions");
-		  if (x.style.display === "none") {
-		    x.style.display = "block";
-		    y.style.borderBottomLeftRadius = "0px";
-    		y.style.borderBottomRightRadius = "0px";
-		  } else {
-		    x.style.display = "none";
-		    y.style.borderBottomLeftRadius = "4px";
-    		y.style.borderBottomRightRadius = "4px";
-		  }
-		}
-    </script>
+    var cssSources = [
+      '/site/css/bootstrap.min.css',
+      '/site/css/main.css',
+    ];
 
-  </head>
-  
-  <body>
-    <header class="site-header">
+    var jsSources = [
+      '/site/js/jquery.min.js',
+      '/site/js/bootstrap.min.js',
+      '/site/js/nav-bar.js',
+      '/site/js/footer.js'
+    ];
+
+    document.write("<script src=\'" + basePath + "/site/js/load-sources.js\'><\/script>");
+
+    function toggle_instructions() {
+      var x = document.getElementById("instructions");
+      var y = document.getElementById("card_instructions");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.borderBottomLeftRadius = "0px";
+        y.style.borderBottomRightRadius = "0px";
+      } else {
+        x.style.display = "none";
+        y.style.borderBottomLeftRadius = "4px";
+        y.style.borderBottomRightRadius = "4px";
+      }
+    }
+  </script>
+
+  <style>
+    .projects-grid {
+      margin-top: 24px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #e6dff0;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(93, 58, 111, 0.10);
+      margin-bottom: 28px;
+      overflow: hidden;
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card-img {
+      background: linear-gradient(135deg, #f5eef8, #eee7f6);
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .project-card-img img {
+      max-height: 115px;
+      max-width: 90%;
+      object-fit: contain;
+    }
+
+    .project-card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-card-body h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #4a2b5f;
+      font-weight: 600;
+    }
+
+    .project-motto {
+      min-height: 72px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .project-team {
+      min-height: 70px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .project-links a {
+      flex: 1;
+      text-decoration: none;
+    }
+
+    .project-links button {
+      width: 100%;
+      background-color: #5d3a6f;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+
+    .project-links button:hover {
+      background-color: #4a2b5f;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
     <!-- Javascript will load the navigation bar code here. -->
-    </header>
+  </header>
 
-    <div class="container">
-          
-      <!-- Begin page content -->
-    
-<h1>Group Project</h1>
-<p>
-  Much of the work involved in this course revolves around a group project. You will be in charge of forming a group of 3-4 people in your section near the start of the quarter. The first section meeting will be dedicated to getting to know your fellow section members and finding a group.
-</p>
+  <div class="container">
 
-<h2>Project Theme</h2>
-<p><em>The Value of Expertise in the Age of AI</em></p>
+    <h1>Project Theme</h1>
+    <p><em>The Value of Expertise in the Age of AI</em></p>
 
-<p>
-  In a world where information is increasingly accessible, expertise is a particularly complex factor to consider in how we design. Everyone has expertise (or more broadly, specialized skill) in something, whether they’re preeminent researchers defining a field or everyday parents who have learned a thing or two after years of raising kids.
-</p>
+    <p>
+      In a world where information is increasingly accessible, expertise is a particularly complex factor to consider in how we design. Everyone has expertise (or more broadly, specialized skill) in something, whether they’re preeminent researchers defining a field or everyday parents who have learned a thing or two after years of raising kids.
+    </p>
 
-<p>There are many kinds of expertise, and many ways to develop it:</p>
+    <p>There are many kinds of expertise, and many ways to develop it:</p>
 
-<ul>
-  <li>
-    Some people develop expertise through rigorous practice or study, like a professor building a career on their specific research, a firefighter or EMT who goes through extensive training, or a professional athlete who constantly works to hone their skills.
-  </li>
-  <li>
-    Some people hone a skill for their own personal enjoyment and develop expertise incidentally, such as hobby artists and crafters, recreational fishers, or amateur skateboarders.
-  </li>
-  <li>
-    Other people become experts unintentionally, through lived experience, such as a “local” who knows the ins and outs of the city they’ve always lived in, or a blind person with years of “lived expertise” in nonvisual navigation.
-  </li>
-</ul>
+    <ul>
+      <li>Some people develop expertise through rigorous practice or study, like a professor building a career on their specific research, a firefighter or EMT who goes through extensive training, or a professional athlete who constantly works to hone their skills.</li>
+      <li>Some people hone a skill for their own personal enjoyment and develop expertise incidentally, such as hobby artists and crafters, recreational fishers, or amateur skateboarders.</li>
+      <li>Other people become experts unintentionally, through lived experience, such as a “local” who knows the ins and outs of the city they’ve always lived in, or a blind person with years of “lived expertise” in nonvisual navigation.</li>
+    </ul>
 
-<p>
-  When developing expertise in a specific area, it is often important to specialize one’s process, rather than defaulting to a more general approach. For instance, a boxer, a swimmer, and a football player will each have their own specialized workout regimen, all of which differ from general “fitness” routines. In order to succeed, designs in this space must be tailored to their specific audience and domain, thoughtfully navigating the differences between the specialized practice and more generalized alternatives.
-</p>
+    <p>
+      When developing expertise in a specific area, it is often important to specialize one’s process, rather than defaulting to a more general approach. For instance, a boxer, a swimmer, and a football player will each have their own specialized workout regimen, all of which differ from general “fitness” routines. In order to succeed, designs in this space must be tailored to their specific audience and domain, thoughtfully navigating the differences between the specialized practice and more generalized alternatives.
+    </p>
 
-<p>
-  There are also many goals related to expertise: some people lack expertise and aim to acquire it; others are experts and wish to effectively apply it; and still others aim to share their expertise and teach non-experts.
-</p>
+    <p>
+      There are also many goals related to expertise: some people lack expertise and aim to acquire it; others are experts and wish to effectively apply it; and still others aim to share their expertise and teach non-experts.
+    </p>
 
-<p>
-  Recent advancements in generative AI have surfaced a specific tension related to expertise: while many argue GenAI makes it easier to become proficient at a skill, others might argue that “shortcutting” the skill-building process with AI fails to build the same expertise. In considering how to design for expertise in 2026, how do you reconcile the potential benefits of AI while still accounting for its limitations?
-</p>
+    <p>
+      Recent advancements in generative AI have surfaced a specific tension related to expertise: while many argue GenAI makes it easier to become proficient at a skill, others might argue that “shortcutting” the skill-building process with AI fails to build the same expertise. In considering how to design for expertise in 2026, how do you reconcile the potential benefits of AI while still accounting for its limitations?
+    </p>
 
-<div class="card">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" id="card_instructions" style="background-color: #5d3a6f; color: #ffffff;" onclick="toggle_instructions()">Project instructions for teams</li>
-    <li class="list-group-item" id="instructions" style="display: none;">
-      <p><strong>Project Brief:</strong></p>
-      <ul>
-        <li>
-          Pick a specific area of expertise or specialization. This can be a skill, a study, a profession, a craft, an activity... anything that a person can develop expertise in, but try to avoid broad/general areas that people commonly focus on or that are overrepresented in design (e.g., general “fitness”, general financial literacy, etc.)
-        </li>
-        <li>
-          Consider the people who might have this expertise or want to develop it themselves, for example:
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" id="card_instructions" style="background-color: #5d3a6f; color: #ffffff;" onclick="toggle_instructions()">Project instructions for teams</li>
+        <li class="list-group-item" id="instructions" style="display: none;">
+          <p><strong>Project Brief:</strong></p>
           <ul>
-            <li>A creative trying a new craft or art form for the first time</li>
-            <li>A scientist who wants to maintain their expertise and stay up-to-date with the latest developments in their field</li>
-            <li>A lifelong professional who wants to train new people in their area</li>
-            <li>And many, many more!</li>
+            <li>Pick a specific area of expertise or specialization. This can be a skill, a study, a profession, a craft, an activity... anything that a person can develop expertise in, but try to avoid broad/general areas that people commonly focus on or that are overrepresented in design.</li>
+            <li>Consider the people who might have this expertise or want to develop it themselves.</li>
+            <li>Identify design challenges related to gaining, sharing, applying, combining, refining, or otherwise interacting with this specific area of expertise.</li>
           </ul>
-        </li>
-        <li>
-          Identify design challenges related to gaining, sharing, applying, combining, refining, or otherwise interacting with this specific area of expertise.
+
+          <p>
+            Throughout your project, consider where Generative AI and other intelligent systems could be employed, and be intentional in your decisions to include OR exclude these systems in your design.
+          </p>
         </li>
       </ul>
+    </div>
 
-      <p>
-        Throughout your project, consider where Generative AI and other intelligent systems could be employed, and be intentional in your decisions to include OR exclude these systems in your design.
-      </p>
-    </li>
-  </ul>
-</div>
+    <h1>Projects</h1>
 
-   
-</div>
+    <div class="row projects-grid">
 
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/research-custodian-logo.png" alt="Research Custodian logo">
+          </div>
+          <div class="project-card-body">
+            <h3>Research Custodian</h3>
+            <p class="project-motto">Connecting university students to opportunities doing interdisciplinary and niche <em>Research</em>.</p>
+            <p class="project-team">Eric Li, Dhruv Srinivasan, Praveer Jain, Nathan Yu, Bethel Bellete</p>
+            <div class="project-links">
+              <a href="https://research-custodian-blog-post.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/33PrCV5Huuk" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-   
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/waypoint-logo.png" alt="WayPoint logo">
+          </div>
+          <div class="project-card-body">
+            <h3>WayPoint</h3>
+            <p class="project-motto">Turn Shared Communities Into Meaningful Connections</p>
+            <p class="project-team">Keerthana Kompella, Yasmin Corona Gomez, Lory Quiroz, Xuan Nhu Tran, Hsu Wai Hnin Kyaw</p>
+            <div class="project-links">
+              <a href="https://mangowaypoint.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/dgCbUCmWG3w?si=Jo-56ijRGbZmPMt2" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <!-- End page content -->
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/baymini-logo.png" alt="Baymini logo">
+          </div>
+          <div class="project-card-body">
+            <h3>Baymini</h3>
+            <p class="project-motto">Your voice-powered companion that remembers every symptom, so your doctor gets the full picture.</p>
+            <p class="project-team">Yi Zeng, Annabelle Martin, Claudia Soebagijo, Kevin Wu, Sahana Hegde</p>
+            <div class="project-links">
+              <a href="https://bayminiblog.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://drive.google.com/file/d/1rcoIxai48ZSOkWYKQT4vk9U0UxMY_8IF/view?usp=sharing" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <footer class="site-footer">
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/vocal-studio-logo.png" alt="Classical Vocal Studio logo">
+          </div>
+          <div class="project-card-body">
+            <h3>Classical Vocal Studio</h3>
+            <p class="project-motto">Master your voice.<br>Conquer the stage.</p>
+            <p class="project-team">Emily Sliwinski, Mara Mihali, Ryan Vu</p>
+            <div class="project-links">
+              <a href="https://classical-vocal-studio.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/k7UhPOIFQnc?si=PM4TYRn8Nkg63nqh" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/iron-path-logo.png" alt="Iron Path logo">
+          </div>
+          <div class="project-card-body">
+            <h3>Iron Path</h3>
+            <p class="project-motto">Train with feedback<br>before form breaks.</p>
+            <p class="project-team">Aryan Verma, David Montiel, Jaewon Lee, Jonathan Lee</p>
+            <div class="project-links">
+              <a href="https://prototype-landing-alpha.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/dvlXvm7MHjU?si=kpvoXkpVrWwbPYt9" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/queuemate-logo.png" alt="QueueMate logo">
+          </div>
+          <div class="project-card-body">
+            <h3>QueueMate</h3>
+            <p class="project-motto">Find compatible teammates. Keep the good ones.</p>
+            <p class="project-team">Nam Dao, MarcusRaine Salvino, Kody Abrams, Ben Yang, Charles Zhou</p>
+            <div class="project-links">
+              <a href="https://project-prototype-v1.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/t8aAmrrVfxc?si=SS_5XdxI05ur6N88" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/guilded-logo.png" alt="Guilded logo">
+          </div>
+          <div class="project-card-body">
+            <h3>Guilded</h3>
+            <p class="project-motto">Find the makers behind the market.</p>
+            <p class="project-team">Nicole Haryono, Fiony Mulia, Kyna Develle, Camaryn Garcia</p>
+            <div class="project-links">
+              <a href="https://guilded-marketgoers.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/SR0ERpju3Qc" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/localeyes-logo.png" alt="localEyes logo">
+          </div>
+          <div class="project-card-body">
+            <h3>localEyes</h3>
+            <p class="project-motto">Share experiences. Discover more.</p>
+            <p class="project-team">Jasmine Zhang, Caitlyn Widjaja, Mahima Uliyar, Theresa Tran, Essa LeFevre</p>
+            <div class="project-links">
+              <a href="https://local-eyes-five.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://drive.google.com/file/d/1hNWTBDqmScB-SfBqyKGvwcl0OpdntXNb/view?usp=sharing" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/testlab-logo.png" alt="TestLab logo">
+          </div>
+          <div class="project-card-body">
+            <h3>TestLab</h3>
+            <p class="project-motto">Bridging the gap between onboarding and real work.</p>
+            <p class="project-team">Long Vu, Mateo Robinson, Peter Van</p>
+            <div class="project-links">
+              <a href="https://testlab-ten.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://youtu.be/Q_Pp8TqVGf8" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/arti-logo.jpg" alt="Arti logo">
+          </div>
+          <div class="project-card-body">
+            <h3>Arti</h3>
+            <p class="project-motto">Elevate brand bio.<br>Calculate compensation.</p>
+            <p class="project-team">Annabelle Choi, Vicky Huang, Sneha Murali, Ivy Nguyen, Nandini Sinha</p>
+            <div class="project-links">
+              <a href="https://arti-hazel.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://www.tiktok.com/@snehamurali50/video/7639584651270540558" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="project-card">
+          <div class="project-card-img">
+            <img src="../img/logos/SteadyStepper - Logo.png" alt="SteadyStepper logo">
+          </div>
+          <div class="project-card-body">
+            <h3>SteadyStepper</h3>
+            <p class="project-motto">From the very first<br>step.</p>
+            <p class="project-team">Michelle Nguyen, Megan Yam, Kairo Montes-Escamilla, Spencer Hensley, Emily Calabaza</p>
+            <div class="project-links">
+              <a href="https://steady-stepper-cse440.vercel.app/" target="_blank"><button type="button">Final Website</button></a>
+              <a href="https://drive.google.com/file/d/1MabFMXaY9oJeFzpAVFQGIrpi9au_PeiG/view" target="_blank"><button type="button">Pitch Video</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
     <!-- Javascript will load the footer code here. -->
-    </footer>
+  </footer>
 
-  </body>
+</body>
 
 </html>
+```
